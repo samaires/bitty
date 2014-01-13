@@ -13,7 +13,7 @@ while True:
 
 	if (input == "Download"):
 		target_torrent = raw_input("Enter name of torrent file: ")
-		con.bitty(target_torrent, ses)
+		h = con.start_bitty(target_torrent, ses)
 
 	if (input == "status"):
-		con.get_status(ses)
+		con.get_status(ses, h)
