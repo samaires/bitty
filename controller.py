@@ -23,3 +23,20 @@ def get_status(ses):
 		print '%.2f%% complete (down: %.1f kb/s up: %1f kb/s peers: %d) %s' % \
 				(s.progress * 100, s.download_rate / 1000, s.upload_rate / 1000, \
 					s.num_peers, state_str[s.state])
+
+
+def pause_download(torrent):
+	active_torrents[torrent].auto_managed(0)
+	active_torrents[torrent].pause(1)
+
+def resume_download(torrent):
+	active_torrents[torrent].resume()
+	active_torrents[torrent].auto_managed(1)
+
+def set_download_limit(torrent, limit):
+	l = limit * 1000
+	active_torrents[torrent].set_download_limit(l)
+
+def set_upload_limit(torrent, limit):
+	l = limit * 100
+	active_torrents[torrent].set_upload_limit(l)
