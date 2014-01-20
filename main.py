@@ -14,6 +14,8 @@ while True:
 
 	ses.load_state(ses)
 
+	con.get_status(ses)
+
 	input = raw_input("What now?")
 
 	if (input == "d"):
@@ -35,6 +37,15 @@ while True:
 		input = raw_input("Which torrent? ")
 		input_limit = raw_input("Input limit: ")
 		con.set_download_limit(int(input), int(input_limit))
+
+	if (input == "t"):
+		input = raw_input("Which torrent? ")
+		con.get_tracker(int(input))
+
+	if (input == "peer"):
+		input = raw_input("Which torrent? ")
+		con.get_peer_download(int(input))
+
 
 	ses.save_state()
 
